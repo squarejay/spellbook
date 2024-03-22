@@ -1,7 +1,7 @@
 resource "aiven_pg" "spellbook-pg" {
   project                 = var.project_name
   cloud_name              = "do-ams"
-  plan                    = "free-1"
+  plan                    = "free-1-5gb"
   service_name            = "spellbook-pg"
   maintenance_window_dow  = "sunday"
   maintenance_window_time = "23:00:00"
