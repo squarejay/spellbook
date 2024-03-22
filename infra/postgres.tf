@@ -39,10 +39,3 @@ resource "random_password" "pg_password" {
   special          = true
   override_special = "_%@"
 }
-
-resource "aiven_pg_user" "pg_user" {
-  project     = var.project_name
-  service_name = aiven_pg.spellbook-pg.service_name
-  username    = var.pg_admin
-  password    = random_password.pg_password.result
-}
