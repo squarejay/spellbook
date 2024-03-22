@@ -1,0 +1,24 @@
+services:
+  redis-spellbook:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - ./.dbs/redis/data:/data
+      - ./.dbs/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./.dbs/redis/logs:/logs
+
+  postgres-spellbook:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: spellbook
+      POSTGRES_PASSWORD: spellbook
+      POSTGRES_DB: spellbook
+
+    volumes:
+      - ./.dbs/postgres/data:/var/lib/postgresql/data
+      - ./.dbs/postgres/conf/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./.dbs/postgres/logs:/var/log/postgresql
